@@ -1,0 +1,211 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Cabinet Grotesk + IBM Plex Mono via Fontshare/Google */
+@import url('https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@800,900,500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;600;700&display=swap');
+
+:root {
+    --kik-bg: #EBEBEB;
+    --kik-bg-alt: #FFFFFF;
+    --kik-bg-dark: #0A0A0A;
+    --kik-ink: #050505;
+    --kik-ink-soft: #555555;
+    --kik-accent: #FF2A00;
+    --kik-accent-hover: #CC2200;
+    --kik-border: #050505;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    background: var(--kik-bg);
+    color: var(--kik-ink);
+    font-family: 'IBM Plex Mono', ui-monospace, Menlo, Monaco, Consolas, monospace;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+    background: var(--kik-accent);
+    color: #fff;
+}
+
+.font-display {
+    font-family: 'Cabinet Grotesk', 'Archivo Black', system-ui, sans-serif;
+    font-weight: 900;
+    letter-spacing: -0.04em;
+    line-height: 0.9;
+}
+
+.font-mono {
+    font-family: 'IBM Plex Mono', ui-monospace, monospace;
+}
+
+.kik-border {
+    border: 1px solid var(--kik-border);
+}
+
+.kik-divider-b {
+    border-bottom: 1px solid var(--kik-border);
+}
+
+.kik-divider-r {
+    border-right: 1px solid var(--kik-border);
+}
+
+.kik-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    border: 1px solid var(--kik-border);
+    background: transparent;
+    color: var(--kik-ink);
+    padding: 0.85rem 1.5rem;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 120ms linear, color 120ms linear;
+    border-radius: 0;
+}
+
+.kik-btn:hover {
+    background: var(--kik-ink);
+    color: #f4f4f4;
+}
+
+.kik-btn-primary {
+    background: var(--kik-accent);
+    color: #fff;
+    border-color: var(--kik-accent);
+}
+
+.kik-btn-primary:hover {
+    background: var(--kik-ink);
+    border-color: var(--kik-ink);
+    color: #fff;
+}
+
+.kik-btn-inverse {
+    background: var(--kik-ink);
+    color: #f4f4f4;
+}
+
+.kik-btn-inverse:hover {
+    background: var(--kik-accent);
+    border-color: var(--kik-accent);
+    color: #fff;
+}
+
+.kik-input {
+    width: 100%;
+    border: 1px solid var(--kik-border);
+    background: transparent;
+    padding: 0.85rem 1rem;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.875rem;
+    border-radius: 0;
+    outline: none;
+    color: var(--kik-ink);
+}
+
+.kik-input:focus {
+    background: #fff;
+    box-shadow: inset 0 0 0 1px var(--kik-accent);
+}
+
+.kik-input::placeholder {
+    color: var(--kik-ink-soft);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-size: 0.75rem;
+}
+
+.kik-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--kik-ink-soft);
+}
+
+.kik-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    border: 1px solid var(--kik-border);
+    padding: 0.25rem 0.6rem;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+}
+
+.kik-tag-accent {
+    background: var(--kik-accent);
+    color: #fff;
+    border-color: var(--kik-accent);
+}
+
+.kik-tag-dark {
+    background: var(--kik-ink);
+    color: #f4f4f4;
+    border-color: var(--kik-ink);
+}
+
+/* Marquee */
+@keyframes kik-marquee {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+.kik-marquee-track {
+    display: inline-flex;
+    white-space: nowrap;
+    animation: kik-marquee 40s linear infinite;
+}
+
+/* Image hover: grayscale -> color */
+.kik-img {
+    filter: grayscale(100%) contrast(1.05);
+    transition: filter 200ms ease;
+}
+
+.kik-img-wrap:hover .kik-img {
+    filter: grayscale(0%) contrast(1);
+}
+
+/* Hide default scroll appearance subtlety */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+::-webkit-scrollbar-thumb {
+    background: var(--kik-ink);
+}
+::-webkit-scrollbar-track {
+    background: var(--kik-bg);
+}
+
+/* Override shadcn radii globally */
+[data-slot] {
+    border-radius: 0 !important;
+}
+
+/* Keep noscript stable */
+.App {
+    min-height: 100vh;
+    background: var(--kik-bg);
+}
